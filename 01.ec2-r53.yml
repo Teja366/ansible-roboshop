@@ -6,4 +6,19 @@
     sg_id: 0567d444e59804edd
     zone_id: "AKIAUSZNFK5TLDBSPZKG"
     domain_name: "devopswithbnvst.uno"
-  tasks: create ec2 user instance
+    instnace:
+    - mongodb
+  tasks: 
+  - name: create ec2 user instance
+    amazon.aws.ec2_instance:
+      name: "{{ item }}"
+      instnace_type: t3.micro
+      security_group: "{{ sg_id }}"
+      image_id: "{{ ami_id }}"
+      tags:
+        Name: "{{ item }}"
+    loop: "{{ instance }}"
+    register: ec2_output
+  - name: print the e2c output
+    ansible.builtin.debug:
+      msg: "{{ ec2_output }}"
