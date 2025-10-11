@@ -6,7 +6,7 @@
     sg_id: 0567d444e59804edd
     zone_id: "AKIAUSZNFK5TLDBSPZKG"
     domain_name: "devopswithbnvst.uno"
-    instnace:
+    instnaces:
     - mongodb
   tasks: 
   - name: create ec2 user instance
@@ -17,7 +17,7 @@
       image_id: "{{ ami_id }}"
       tags:
         Name: "{{ item }}"
-    loop: "{{ instance }}"
+    loop: "{{ instances }}"
     register: ec2_output
   - name: print the e2c output
     ansible.builtin.debug:
