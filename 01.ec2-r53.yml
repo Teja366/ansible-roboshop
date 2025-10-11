@@ -1,0 +1,9 @@
+- name: create ec2 and r53
+  hosts: local
+  connection: local
+  vars:
+    ami_id: ami-09c813fb71547fc4f
+    sg_id: 0567d444e59804edd
+    zone_id: "AKIAUSZNFK5TLDBSPZKG"
+    domain_name: "devopswithbnvst.uno"
+  tasks: create ec2 user instance
