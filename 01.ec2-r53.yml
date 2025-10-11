@@ -3,7 +3,7 @@
   connection: local
   vars:
     ami_id: ami-09c813fb71547fc4f
-    sg_id: 0567d444e59804edd
+    sg_id: sg-0567d444e59804edd
     zone_id: "AKIAUSZNFK5TLDBSPZKG"
     domain_name: "devopswithbnvst.uno"
     instances:
