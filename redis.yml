@@ -1,5 +1,5 @@
 - name: setup mongodb server
-  hosts: mongodb
+  hosts: redis
   become: yes
   tasks:
   - name: disabling deafult redis
