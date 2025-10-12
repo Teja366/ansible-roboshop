@@ -6,11 +6,13 @@
     sg_id: sg-0567d444e59804edd
     zone_id: "AKIAUSZNFK5TLDBSPZKG"
     domain_name: "devopswithbnvst.uno"
-    instances:
-    - mongodb
-    - redis
-    - mysql
-    - rabbitmq
+
+    # can pass instnaces in command line 
+    # instances:
+    # - mongodb
+    # - redis
+    # - mysql
+    # - rabbitmq
 
   tasks: 
   - name: create ec2 user instance
