@@ -2,9 +2,9 @@
   hosts: local
   connection: local
   vars:
-    ami_id: ami-09c813fb71547fc4f
+    ami_id: ami-0220d79f3f480ecf5
     sg_id: sg-0567d444e59804edd
-    zone_id: "AKIAUSZNFK5TLDBSPZKG"
+    zone_id: "Z0045339290QRQ9M5GVF5"
     domain_name: "devopswithbnvst.uno"
 
     # can pass instnaces in command line 
