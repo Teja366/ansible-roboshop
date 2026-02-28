@@ -21,6 +21,7 @@
       instance_type: t3.micro
       security_group: "{{ sg_id }}"
       image_id: "{{ ami_id }}"
+      assign_public_ip: true
       tags:
         Name: "{{ item }}"
     loop: "{{ instances }}"
@@ -30,15 +31,15 @@
   #   ansible.builtin.debug:
   #     msg: "{{ ec2_output }}"
 
-  - name: print public_ip
-    ansible.builtin.debug: 
-      msg: "{{ item.instances[0].public_ip_address }}"
-    loop: "{{ ec2_output.results }}"
+  # - name: print public_ip
+  #   ansible.builtin.debug: 
+  #     msg: "{{ item.instances[0].public_ip_address }}"
+  #   loop: "{{ ec2_output.results }}"
 
-  - name: print private_ip
-    ansible.builtin.debug: 
-      msg: "{{ item.instances[0].private_ip_address }}"
-    loop: "{{ ec2_output.results }}"
+  # - name: print private_ip
+  #   ansible.builtin.debug: 
+  #     msg: "{{ item.instances[0].private_ip_address }}"
+  #   loop: "{{ ec2_output.results }}"
   tasks: 
   - name: create route53 record
     amazon.aws.route53:
