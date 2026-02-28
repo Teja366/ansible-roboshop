@@ -1,5 +1,5 @@
 - name: create ec2 and r53
-  hosts: local
+  hosts: localhost
   connection: local
   vars:
     ami_id: ami-0220d79f3f480ecf5
@@ -27,20 +27,7 @@
     loop: "{{ instances }}"
     register: ec2_output
 
-  # - name: print the e2c output
-  #   ansible.builtin.debug:
-  #     msg: "{{ ec2_output }}"
 
-  # - name: print public_ip
-  #   ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].public_ip_address }}"
-  #   loop: "{{ ec2_output.results }}"
-
-  # - name: print private_ip
-  #   ansible.builtin.debug: 
-  #     msg: "{{ item.instances[0].private_ip_address }}"
-  #   loop: "{{ ec2_output.results }}"
-  tasks: 
   - name: create route53 record
     amazon.aws.route53:
       state: present
@@ -50,7 +37,7 @@
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}" 
       overwrite: true
-    # loop: "{{ ec2_output.results }}"
+    loop: "{{ ec2_output.results }}"
 
 
 #we are creating one record with public for frontend 
@@ -61,7 +48,7 @@
       record: "{{ domain_name }}"
       type: A
       ttl: 1
-      value: "{{ item.instances[0].public_ip }}" 
+      value: "{{ item.instances[0].public_ip_address }}" 
       overwrite: true
     when: item.item == "frontend"
     loop: "{{ ec2_output.results }}"
