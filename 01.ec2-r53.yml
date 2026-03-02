@@ -7,6 +7,12 @@
     zone_id: "Z0045339290QRQ9M5GVF5"
     domain_name: "devopswithbnvst.uno"
 
+    instances: 
+    - mongodb
+    - redis
+    - mysql
+    - rabbitmq
+
   tasks:
   - name: create ec2 instance
     amazon.aws.ec2_instance:
